@@ -36,6 +36,8 @@ ball_1.setKeyPressed(keyPressed)
 ball_1.setRightKey('d')
 ball_1.setLeftKey('a')
 
+ball_1.enableTrail()
+
 ball_2.changePosition([100,0])
 ball_3.changePosition([300,0])
 
@@ -66,7 +68,7 @@ while (True):
             if(event.key == pygame.K_a):
                 keyPressed['a'] = True
             
-            print(event.key)
+            # print(event.key)
 
         if(event.type == pygame.KEYUP):
             if(event.key == pygame.K_d):

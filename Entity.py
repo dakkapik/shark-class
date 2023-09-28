@@ -12,6 +12,10 @@ class Entity () :
         img = pygame.image.load(os.path.join(ASSETS_DIR, imagePath))
         self.img = pygame.transform.scale(img, size)
 
+        self.leaveTrail = False
+        self.trail = []
+
+
         self.screen = screen
         self.pos = [SCREEN_SIZE[0]/2, 0]
         self.velocity = [0,0]
@@ -56,6 +60,18 @@ class Entity () :
         self.inputsActive = True
         self.inputs['left'] = key
     
+    def enableTrail(self):
+        self.leaveTrail = True
+        
+    def disableTrain(self):
+        self.leaveTrail = False
+        self.trail = []
+        
+    def drawTrail(self):
+        if(len(self.trail) > 2):
+            pygame.draw.lines(self.screen, 'black', False,self.trail)
+            
+    
     def update( self ):
         self.pos[0] = self.pos[0] + self.velocity[0]
         self.pos[1] = self.pos[1] + self.velocity[1]
@@ -69,6 +85,10 @@ class Entity () :
 
         if(self.inputsActive):
             self.checkInputs()
+
+        if(self.leaveTrail):
+            self.trail.append((self.pos[0], self.pos[1]))
+            self.drawTrail()
 
         self.draw()
         pass
