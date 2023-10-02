@@ -16,7 +16,7 @@ keyPressed = ({
 
 class Game () :
     def __init__(self, imagePath = False, size = (1000,600)) -> None:
-        
+        self.size = size
         if(imagePath):
             img = pygame.image.load(os.path.join(ASSETS_DIR, imagePath))
             self.img = pygame.transform.scale(img, size)
