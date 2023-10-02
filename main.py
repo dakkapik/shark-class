@@ -6,6 +6,11 @@ from pygame.locals import *
 SCREEN_SIZE = (1000,600)
 FLOOR_POSITION = 550
 
+keyPressed = ({
+    'a':False,
+    'd':False
+})
+
 class Entity () :
     def __init__(self, imagePath, size, screen) -> None:
 
@@ -43,6 +48,12 @@ class Entity () :
             self.velocity[1] = self.velocity[1] + 0.08
         else:
             self.velocity[1] = 0
+
+        if(keyPressed['d']):
+            self.velocity[0] = 1
+        else: 
+            self.velocity[0] = 0
+            pass
 
         self.draw()
         pass
@@ -95,12 +106,15 @@ while (True):
     for event in pygame.event.get():
 
         if event.type == pygame.KEYDOWN:
-
             if(event.key == pygame.K_w):
-                
                 ball_1.jump()
 
-            print(event.key)
+            if(event.key == pygame.K_d):
+                keyPressed['d'] = True
+
+        if event.type == pygame.KEYUP:
+            if(event.key == pygame.K_d):
+                keyPressed['d'] = False
 
         if event.type == pygame.QUIT:
 
