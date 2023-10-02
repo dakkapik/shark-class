@@ -13,10 +13,10 @@ keyPressed = ({
     'a':False
 })
 
-
 class Game () :
     def __init__(self, imagePath = False, size = (1000,600)) -> None:
-        self.size = size
+        # self.size = size
+
         if(imagePath):
             img = pygame.image.load(os.path.join(ASSETS_DIR, imagePath))
             self.img = pygame.transform.scale(img, size)
@@ -118,6 +118,8 @@ ball_3 = Entity("ball.png", (50,50), screen)
 ball_1.setRightKey('d')
 ball_1.setLeftKey('a')
 
+# ball_2.setRightKey('g')
+# ball_2.setLeftKey('f')
 
 ball_2.changePosition([100,0])
 ball_3.changePosition([300,0])
