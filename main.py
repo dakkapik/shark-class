@@ -1,10 +1,8 @@
 import pygame
 import sys
 import os
-from Game import Game
-from Entity import Entity
-
-# from pygame.locals import *
+from ClassGame import Game
+from ClassEntity import Entity
 
 ASSETS_DIR = './assets'
 
