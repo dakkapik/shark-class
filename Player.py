@@ -12,9 +12,9 @@ class Entity () :
         img = pygame.image.load(os.path.join(ASSETS_DIR, imagePath))
         self.img = pygame.transform.scale(img, size)
 
-        self.size = size
         self.leaveTrail = False
         self.trail = []
+
 
         self.screen = screen
         self.pos = [SCREEN_SIZE[0]/2, 0]
@@ -38,13 +38,9 @@ class Entity () :
         self.velocity[1] = -5
     
     def draw(self):
-        self.screen.blit(self.img, (self.pos[0] - self.size[0]/2, self.pos[1]- self.size[1]/2))
-        pass
-
-    def drawHitbox(self):
-        self.screen.blit(self.img, (self.pos[0] - self.size[0]/2, self.pos[1]- self.size[1]/2))
-        pass
-
+            self.screen.blit(self.img, (self.pos[0],self.pos[1]))
+            pass
+    
     def setKeyPressed(self, obj):
         self.keyPressed = obj
     
