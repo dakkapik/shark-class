@@ -42,7 +42,7 @@ class Entity () :
         pass
 
     def drawHitbox(self):
-        self.screen.blit(self.img, (self.pos[0] - self.size[0]/2, self.pos[1]- self.size[1]/2))
+        pygame.draw.rect(self.screen, 'grey', )
         pass
 
     def setKeyPressed(self, obj):
