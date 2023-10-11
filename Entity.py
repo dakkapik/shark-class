@@ -20,7 +20,6 @@ class Entity () :
 
         self.img = pygame.transform.scale(img, size)
 
-
         self.leaveTrail = False
         self.trail = []
         self.trailCounter = 0
