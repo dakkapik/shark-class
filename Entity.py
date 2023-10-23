@@ -23,6 +23,7 @@ class Entity () :
         self.leaveTrail = False
         self.trail = []
         self.trailCounter = 0
+        self.size = size
 
         self.screen = screen
 
@@ -59,7 +60,7 @@ class Entity () :
 
     def draw(self):
 
-            self.screen.blit(self.img, (self.pos[0],self.pos[1]))
+            self.screen.blit(self.img, (self.pos[0] + (self.size[0]/2), self.pos[1] + (self.size[1]/2)))
             pass
     
 
