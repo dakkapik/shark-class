@@ -1,99 +1,34 @@
 import pygame
 import sys
 import os
-
 import math
 
-
 from Game import Game
-
-
-from Entity import Entity
-
-
-from Snake import Snake 
-
-
+from Circle import Circle
 
 # from pygame.locals import *
-
-
-
 ASSETS_DIR = './assets'
-
-
-
 SCREEN_SIZE = (1000,600)
-
-
 FLOOR_POSITION = 550
 
-
-
 keyPressed = ({
-
-
     'd':False,
-
     'a':False
-
-
 })
-
-
 
 pygame.init()  # initialize pygame
 
-
-
 clock = pygame.time.Clock()
-
-
-
 screen = pygame.display.set_mode(SCREEN_SIZE) 
-
-
 
 # Load the background image here. Make sure the file exists!
 
-
-
 # bg = pygame.image.load(os.path.join("./", "background.png"))
-
 
 game = Game(screen)
 
-diameter = 50
-rad = diameter/2
-
-snake = Snake("ball.png", (diameter, diameter), screen)
-
-
-ball_2 = Entity("ball.png", (diameter, diameter), screen)
-
-
-snake.setKeyPressed(keyPressed)
-
-
-snake.setRightKey('d')
-
-snake.setLeftKey('a')
-
-# snake.enableTrail()
-
-
-ball_2.setKeyPressed(keyPressed)
-
-# ball_2.setRightKey('rightArrow')
-
-# ball_2.setLeftKey('leftArrow')
-
-
-
-ball_2.changePosition([100,0])
-
-
-# ball_3.changePosition([300,0])
+A = Circle([100,100], 50, "ball.png", screen)
+B = Circle([200,100], 50, "ball.png", screen)
 
 pygame.mouse.set_visible(0)
 
@@ -119,25 +54,12 @@ def collision ():
         print('they are touching')
 
 
-
 while (True):
-
-
-
     clock.tick(60)
 
-
-
     game.update()
-
-    snake.update()
-
-
-    ball_2.update()
-
-
-    collision()
-
+    A.update()
+    B.update()
 
     for event in pygame.event.get():
 
@@ -148,8 +70,7 @@ while (True):
 
             if(event.key == pygame.K_w):
 
-                snake.jump()
-
+                pass
 
             if(event.key == pygame.K_d):
                 
@@ -189,8 +110,5 @@ while (True):
 
 
             sys.exit()
-
-
-
 
     pygame.display.update()
