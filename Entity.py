@@ -7,7 +7,8 @@ FLOOR_POSITION = 550
 
 class Entity () :
 
-    def __init__(self, position, screen) -> None:
+    def __init__(self, position, screen, ident) -> None:
+        self.ident = ident
         self.pos = position
         self.screen = screen
         self.velocity = [0,0]
@@ -83,7 +84,7 @@ class Entity () :
         if(self.inputsActive):
 
             self.checkInputs()
-            
+
         self.draw()
         pass
 

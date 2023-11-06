@@ -27,12 +27,14 @@ screen = pygame.display.set_mode(SCREEN_SIZE)
 
 game = Game(screen)
 
-A = Circle([100,100], 50, "ball.png", screen)
-B = Circle([200,100], 50, "ball.png", screen)
+
+entities = []
+
+for i in range(30):
+    entities.append(Circle([500,100], 50, "ball.png", screen, str(i)))
+
 
 pygame.mouse.set_visible(0)
-
-
 
 pygame.display.set_caption('Shark Pals Game')
 
@@ -40,31 +42,32 @@ pygame.display.set_caption('Shark Pals Game')
 
 # fix indentation
 
-def collision ():
+def collision (bodyA, bodyB):
+    if(bodyA.ident == bodyB.ident): return
 
-    deltaX = snake.pos[0] - ball_2.pos[0]
-
-    deltaY = snake.pos[1] - ball_2.pos[1]
+    deltaX = bodyA.pos[0] - bodyB.pos[0]
+    deltaY = bodyA.pos[1] - bodyB.pos[1]
+    # print("X: "+ str(deltaX))
+    # print("Y: "+ str(deltaY))
 
     h = math.sqrt((deltaX*deltaX)+(deltaY*deltaY))
-    
-    if(h < rad*2):
-        snake.velocity[1] = -5
-        ball_2.velocity[1] = -5
-        print('they are touching')
+    # print(h)
+    if(h < bodyA.radius + bodyB.radius):
+        print('body : ' + bodyA.ident+ ' touching body: '+bodyB.ident)
 
 
 while (True):
     clock.tick(60)
 
     game.update()
-    A.update()
-    B.update()
+
+    for e in entities:
+        for t in entities:
+            collision(e, t)
+        
+        e.update()
 
     for event in pygame.event.get():
-
-
-
         if event.type == pygame.KEYDOWN:
 
 
